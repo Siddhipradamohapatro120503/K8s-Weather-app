@@ -10,7 +10,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-const apiKey = "5b36f79cd3dec362ce26d278b45a3b54"
+const apiKey = ""
 
 type WeatherData struct {
 	Name string `json:"name"`
