@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f5f5;
+        }
+        .weather-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .weather-container h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .weather-container p {
+            margin: 5px 0;
+        }
+        .weather-container form {
+            margin-bottom: 20px;
+        }
+        .weather-container input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        .weather-container input[type="submit"] {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <form action="/" method="get">
+            <input type="text" name="city" placeholder="Enter city name">
+            <input type="submit" value="Search">
+        </form>
+        <h1>Weather in {{.Name}}</h1>
+        <p>Temperature: {{.Main.Temp}}°C</p>
+        <p>Pressure: {{.Main.Pressure}} hPa</p>
+        <p>Humidity: {{.Main.Humidity}}%</p>
+        <p>Condition: {{index .Weather 0 "Description"}}</p>
+        <img src="http://openweathermap.org/img/wn/{{index .Weather 0 "Icon"}}@2x.png" alt="Weather Icon">
+    </div>
+</body>
+</html>
