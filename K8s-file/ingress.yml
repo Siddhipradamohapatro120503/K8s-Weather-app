@@ -16,11 +16,4 @@ spec:
             port:
               number: 80
         path: /
-        pathType: Prefix
-      - backend:
-          service:
-            name: sid
-            port:
-              number: 80
-        path: /play
-        pathType: Prefix
+  
