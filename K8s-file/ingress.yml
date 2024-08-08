@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-kubecloud
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: demo.siddhidevops.me
+    http:
+      paths:
+      - backend:
+          service:
+            name: weather
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+      - backend:
+          service:
+            name: sid
+            port:
+              number: 80
+        path: /play
+        pathType: Prefix
