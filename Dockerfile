@@ -8,7 +8,8 @@ WORKDIR /app
 COPY go.mod go.sum ./
 
 # Download dependencies
-RUN go mod tidy
+RUN go clean -modcache
+RUN go mod tidy -v
 
 # Copy the source code to the working directory
 COPY . .
