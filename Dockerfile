@@ -14,7 +14,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN go build -o weather-app
+RUN go build -v -o weather-app
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
