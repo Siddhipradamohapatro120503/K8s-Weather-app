@@ -1,5 +1,5 @@
 # Use the official Go image as the base image
-FROM golang:1.21-alpine
+FROM golang:latest
 
 # Set the current working directory inside the container
 WORKDIR /app
@@ -7,6 +7,8 @@ WORKDIR /app
 # Copy go.mod and go.sum files to the working directory
 COPY go.mod go.sum ./
 
+
+RUN go mod download
 
 # Copy the source code to the working directory
 COPY . .
