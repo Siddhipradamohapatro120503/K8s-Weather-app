@@ -1,15 +1,22 @@
-# Use the official Go image as the base image
-FROM golang:1.21
+# Use the official Golang image as the base image
+FROM golang:1.20
 
+# Set the Current Working Directory inside the container
 WORKDIR /app
 
+# Copy go.mod and go.sum files to the container
 COPY go.mod go.sum ./
-RUN go mod tidy
-RUN go mod download -x || (go mod download -x 2>&1 && false)
 
+# Download all dependencies. This can help identify issues early.
+RUN go mod download
+
+# Copy the rest of the application code to the container
 COPY . .
 
-RUN go build -v -o weather-app
+# Run go mod tidy to ensure all necessary modules are included
+RUN go mod tidy
+
+RUN go build -o weather-app
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
