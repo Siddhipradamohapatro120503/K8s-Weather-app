@@ -1,19 +1,13 @@
 # Use the official Go image as the base image
-FROM golang:latest
+FROM golang:1.21
 
-# Set the current working directory inside the container
 WORKDIR /app
 
-# Copy go.mod and go.sum files to the working directory
 COPY go.mod go.sum ./
-
-
 RUN go mod download
 
-# Copy the source code to the working directory
 COPY . .
 
-# Build the Go app
 RUN go build -v -o weather-app
 
 # Expose port 8080 to the outside world
